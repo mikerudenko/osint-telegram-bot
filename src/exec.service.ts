@@ -1,6 +1,24 @@
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
-import { promises as fs } from 'fs';
+
+const child_process = require('child_process');
+import fs from 'fs';
+
+const exec = async (mainCommand:string, commands: string[], fileUrl: string) => new Promise((resolve) => {
+
+    const work = child_process.spawn(mainCommand, commands);
+    work.stdout.on('data', (data: string) => {
+        console.log(`stdout: ${data}`);
+        fs.appendFileSync(fileUrl, data);
+    });
+
+    work.stderr.on('data', (data:string) => {
+        console.error(`ps stderr: ${data}`);
+      });
+
+    work.on('close', () => {
+        console.log('close');
+        resolve(true);
+    });
+})
 
 export const getCommonWPScan = async (url:string) => {
     if(url.includes('http')) {
@@ -8,9 +26,8 @@ export const getCommonWPScan = async (url:string) => {
     }
 
     try {
-        const { stdout } = await exec(`wpscan --url ${url}`);
         const sourceUrl = `./wp-scan/${url}-common-scan.txt`;
-        await fs.writeFile(sourceUrl, stdout,  'utf8');
+        await exec('wpscan', ['--url', url], sourceUrl);
         return {sourceUrl, error: null}
     } catch(error) {
         console.log(error)
@@ -24,9 +41,8 @@ export const getGoBusterScan = async (url:string) => {
     }
 
     try {
-        const { stdout } = await exec(`gobuster dir --url ${url} --wordlist ./web-content.txt`);
         const sourceUrl = `./gobuster/${url}-scan.txt`;
-        await fs.writeFile(sourceUrl, stdout,  'utf8');
+        await exec('gobuster', ['dir', '--url', url, '--wordlist', './web-content.txt'], sourceUrl);
         return {sourceUrl, error: null}
     } catch(error) {
         console.log(error)

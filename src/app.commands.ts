@@ -27,7 +27,6 @@ const runAppCommandScan = async (ctx: Context, command: AppCommand) => {
             ctx.reply(`${command} is done!`, mainKeyboard)
         }
 
-
     } catch (error) {
         if(error instanceof Error) {
             ctx.reply(error.name, mainKeyboard)
@@ -36,13 +35,13 @@ const runAppCommandScan = async (ctx: Context, command: AppCommand) => {
 }
 
 export const initCommands = (bot: Telegraf<Context<Update>> ) => {
-    bot.action(AppCommand.WPSCAN, async (ctx:Context) => {
-        ctx.reply('Working on it...')
-        await runAppCommandScan(ctx, AppCommand.WPSCAN)
+    bot.action(AppCommand.WPSCAN, (ctx:Context) => {
+        ctx.reply('Working on wordpress scan...')
+        runAppCommandScan(ctx, AppCommand.WPSCAN)
     });
 
-    bot.action(AppCommand.GOBUSTER, async (ctx:Context) => {
-        ctx.reply('Working on it...')
-        await runAppCommandScan(ctx, AppCommand.GOBUSTER)
+    bot.action(AppCommand.GOBUSTER, (ctx:Context) => {
+        ctx.reply('Working on gobuster scan...')
+        runAppCommandScan(ctx, AppCommand.GOBUSTER)
     });
 }
