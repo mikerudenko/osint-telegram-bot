@@ -1,0 +1,80 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.21
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[32m[+][0m URL: http://blog.playstation.com/ [13.227.219.14]
+[32m[+][0m Effective URL: https://blog.playstation.com/
+[32m[+][0m Started: Fri May 20 20:59:41 2022
+
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entries:
+ |  - server: nginx
+ |  - content-security-policy: object-src 'none'; base-uri 'self'
+ |  - x-batcache: MISS
+ |  - via: 1.1 6642832e0f3e501fb9fdc5f35d4351d8.cloudfront.net (CloudFront)
+ |  - x-amz-cf-pop: AMS54-C1
+ |  - x-amz-cf-id: g_g7s6FfHgDorOj2xb_Zd6PrrJxAlBAP8OGZJq6EEgaZqRsoqYobyw==
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[32m[+][0m This site has 'Must Use Plugins': http://blog.playstation.com/content/mu-plugins/
+ | Found By: URLs In Homepage (Passive Detection)
+ | Confidence: 70%
+ | Reference: http://codex.wordpress.org/Must_Use_Plugins
+
+[32m[+][0m WordPress version 5.8.4 identified (Latest, released on 2022-03-11).
+ | Found By: Most Common Wp Includes Query Parameter In Homepage (Passive Detection)
+ |  - https://blog.playstation.com/wp-includes/js/wp-embed.min.js?ver=5.8.4
+ | Confirmed By: Rdf Generator (Aggressive Detection)
+ |  - https://blog.playstation.com/feed/rdf/, <generatoragent rdf:resource="https://wordpress.org/?v=5.8.4"></generatoragent>
+
+[32m[+][0m WordPress theme in use: playstation-2018
+ | Location: http://blog.playstation.com/content/themes/playstation-2018/
+ | Style URL: http://blog.playstation.com/content/themes/playstation-2018/style.css
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | The version could not be determined.
+
+[32m[+][0m Enumerating All Plugins (via Passive Methods)
+[32m[+][0m Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[34m[i][0m Plugin(s) Identified:
+
+[32m[+][0m psn-cookie-notice
+ | Location: http://blog.playstation.com/content/plugins/psn-cookie-notice/
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | The version could not be determined.
+
+[32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
+
+ Checking Config Backups -: |=======================================================================================================================================|
+
+[34m[i][0m No Config Backups Found.
+
+[33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
+[33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Fri May 20 20:59:58 2022
+[32m[+][0m Requests Done: 184
+[32m[+][0m Cached Requests: 4
+[32m[+][0m Data Sent: 43.228 KB
+[32m[+][0m Data Received: 1.408 MB
+[32m[+][0m Memory used: 256.969 MB
+[32m[+][0m Elapsed time: 00:00:17
